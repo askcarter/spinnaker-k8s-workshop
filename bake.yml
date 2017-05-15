@@ -1,0 +1,103 @@
+# Playbook to bake image
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: Install latest version of nginx
+    apt:
+      name: nginx
+      state: latest
+  - name: Add nginx config for app
+    become: yes
+    blockinfile:
+      dest: /etc/nginx/sites-enabled/sample-app
+      create: yes
+      block: |
+        server {
+          listen 80 default_server;
+          listen [::]:80 default_server;
+          location / {
+            proxy_pass http://127.0.0.1:8081;
+          }
+        }
+  - name: Disable default nginx site
+    file:
+      path: "/etc/nginx/sites-enabled/default"
+      state: absent
+  - name: Download golang
+    become: yes
+    get_url:
+      url: "https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz"
+      dest: "/root/go.tar.gz"
+      sha256sum: "a579ab19d5237e263254f1eac5352efcf1d70b9dacadb6d6bb12b0911ede8994"
+  - name: Unarchive golang to installation directory
+    become: yes
+    unarchive:
+      src: "/root/go.tar.gz"
+      dest: "/usr/local"
+      owner: root
+      group: root
+      copy: no
+      creates: "/usr/local/go"
+  - name: Add go to PATH
+    become: yes
+    lineinfile:
+      dest: /etc/profile
+      line: "export PATH=$PATH:/usr/local/go/bin"
+  - name: Install app dependencies
+    become: yes
+    shell: GOPATH=/opt/go /usr/local/go/bin/go get ./...
+    args:
+      chdir: /opt/go/src/deploy
+  - name: Compile app dependencies
+    become: yes
+    shell: GOPATH=/opt/go /usr/local/go/bin/go install
+    args:
+      chdir: /opt/go/src/deploy
+      creates: /opt/go/bin/deploy
+  - name: Add the systemd service file for the backend
+    become: yes
+    blockinfile:
+      dest: /etc/systemd/system/sample-app-backend.service
+      create: yes
+      block: |
+        [Unit]
+        Description=Sample App Backend
+
+        [Service]
+        Restart=always
+        TimeoutStartSec=0
+        RestartSec=3
+        WorkingDirectory=/opt/go/src/deploy
+        ExecStart=/opt/go/bin/deploy
+
+        [Install]
+        WantedBy=multi-user.target
+
+  - name: Add the systemd service file for the frontend
+    become: yes
+    blockinfile:
+      dest: /etc/systemd/system/sample-app-frontend.service
+      create: yes
+      block: |
+        [Unit]
+        Description=Sample App Frontend
+
+        [Service]
+        Restart=always
+        TimeoutStartSec=0
+        RestartSec=3
+        WorkingDirectory=/opt/go/src/deploy
+        ExecStart=/opt/go/bin/deploy -port 8081 -frontend -backend-service http://127.0.0.1:8080
+
+        [Install]
+        WantedBy=multi-user.target
+
+  - name: Enable the services 
+    systemd:
+      name: "{{item}}"
+      daemon_reload: yes
+      enabled: True
+      state: stopped
+    with_items:
+      - sample-app-backend
+      - sample-app-frontend
