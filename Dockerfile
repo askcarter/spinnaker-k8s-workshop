@@ -13,9 +13,21 @@
 
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# Set base image
 FROM golang:1.8
+
+# Copy in the source code
 COPY . /go/src/app
+
+# Set working directory
 WORKDIR /go/src/app
+
+# Fetch dependencies
 RUN go get -v
+
+# Build the binary
 RUN go build
+
+# Set the default command for the container
 CMD ["app"]
