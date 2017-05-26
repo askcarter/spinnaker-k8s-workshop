@@ -200,15 +200,10 @@ Visit the Spinnaker UI by opening your browser to: http://127.0.0.1:9000
 # Setting up Source Control
 TODO: This should before here, possibly in the overview
 
-TODO:  Swap with git steps.  This is probably unneccesary since we're just going to pull this github repo.  
-Cloning the repo
-```
-$ gcloud source repos clone default --project=askcarter-production-gke
-```
-
 NOTE:  This may not be necessary here.  
 ```
 $ git clone https://github.com/askcarter/spinnaker-k8s-workshop
+$ cd spinnaker-k8s-workshop
 ```
 
 Pushing the image to gcr. 
@@ -247,8 +242,8 @@ $ git push --all google
 ```
 
 ```
-$ git tag v2.0.0
-$ git push google --tags v2.0.0
+$ git tag -a v2.0.0 -m "my version 2.0.0"
+$ git push google v2.0.0
 ```
 
 Back in the Spinnaker UI, our build should've kicked off.
@@ -256,6 +251,30 @@ Back in the Spinnaker UI, our build should've kicked off.
 # Rolling Back
 Use git to go back a commit, then push the image and bump the tag.
 I workshop have user make two commits (the 2nd of which is bad).  When the user pushes them, have them follow this process.
+
+```
+# Change code
+$ git add <change>
+$ git commit -m "Working code fix."
+
+# Change code
+$ git add <change>
+$ git commit -m "Broken code fix."
+
+$ git push google master
+
+$ git tag -a v3.0.0 -m "my version 3.0.0"
+$ git push google v3.0.0
+```
+
+Roll back change
+```
+$ git <rollback one commit>
+$ git commit -m "Rollbacked buggy code."
+$ git push google master
+# $  git tag -a v4.0.0 -m "my version 4.0.0"
+$ git push google v4.0.0
+```
 
 
 You can also use the UI if you need an escape hatch.
