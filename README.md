@@ -28,6 +28,10 @@ In this workshop, you'll will:
 ## Cloud Shell
 ## Get the Code
 
+```
+$ git clone https://github.com/askcarter/spinnaker-k8s-workshop
+```
+
 ## Cluster Setup
 ### Create Cluster
 
