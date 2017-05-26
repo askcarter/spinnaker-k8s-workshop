@@ -190,11 +190,11 @@ $ helm upgrade cd charts/stable/spinnaker -f updated-values.yaml
 
 Access the spinnaker UI
 ```
-$ export DECK_POD=$(kubectl get pods --namespace spinnaker -l "component=deck,app=cd-spinnaker" -o jsonpath="{.items[0].metadata.name}")
-$ kubectl port-forward --namespace spinnaker $DECK_POD 9000 >>/dev/null &
+$ DECK_POD=$(kubectl get pods -l "component=deck,app=cd-spinnaker" -o jsonpath="{.items[0].metadata.name}")
+$ kubectl port-forward $DECK_POD 9000 >>/dev/null &
 ```
  
-Visit the Spinnaker UI by opening your browser to: [http://127.0.0.1:9000](http://127.0.0.1:9000])
+Visit the Spinnaker UI by opening your browser to: http://127.0.0.1:9000
 
 # Setting up Source Control
 TODO: This should before here, possibly in the overview
