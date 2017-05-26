@@ -32,7 +32,7 @@ In this workshop, you'll will:
 * http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-google-cloud-platform
 * https://github.com/kubernetes/helm/blob/master/docs/quickstart.md
 * https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes
-
+* [Spinnaker Video Codelabs](https://www.youtube.com/watch?v=N9VnJlKn734&list=PL4yLrwUObNkttE526AAj_ykc5UlIPjz8m&index=1)
 
 # Workshop setup
 
