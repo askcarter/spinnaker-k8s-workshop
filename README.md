@@ -209,6 +209,7 @@ $ cd spinnaker-k8s-workshop
 Pushing the image to gcr. 
 Note: Add v to semver so that we can use the v* tag as a build trigger
 ```
+$ gcloud beta source repos create gceme
 $ gcloud container builds submit -t gcr.io/askcarter-production-gke/gceme:v1.0.0 .
 ```
 
