@@ -31,6 +31,7 @@ In this workshop, you'll will:
 * https://medium.com/continuous-delivery-scale/lifting-the-sail-how-spinnaker-maps-resources-to-kubernetes-57da9c1657ba
 * http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-google-cloud-platform
 * https://github.com/kubernetes/helm/blob/master/docs/quickstart.md
+* https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes
 
 
 # Workshop setup
@@ -199,12 +200,19 @@ Visit the Spinnaker UI by opening your browser to: http://127.0.0.1:9000
 # Setting up Source Control
 TODO: This should before here, possibly in the overview
 
+TODO:  Swap with git steps.  This is probably unneccesary since we're just going to pull this github repo.  
 Cloning the repo
 ```
 $ gcloud source repos clone default --project=askcarter-production-gke
 ```
 
-Pushing the image to gcr.  Add v to semver so that we can use the v* tag as a build trigger
+NOTE:  This may not be necessary here.  
+```
+$ git clone https://github.com/askcarter/spinnaker-k8s-workshop
+```
+
+Pushing the image to gcr. 
+Note: Add v to semver so that we can use the v* tag as a build trigger
 ```
 $ gcloud container builds submit -t gcr.io/askcarter-production-gke/gceme:v1.0.0 .
 ```
@@ -233,8 +241,14 @@ In gcr.io set up to:
 Changes pushed to "v.*" tag will trigger a build of "gcr.io/askcarter-production-gke/$REPO_NAME:$TAG_NAME"
 
 ```
+$ git config credential.helper gcloud.sh
+$ git remote add google https://source.developers.google.com/p/REPLACE_WITH_YOUR_PROJECT_ID/r/default
+$ git push --all google
+```
+
+```
 $ git tag v2.0.0
-$ git push origin --tags v2.0.0
+$ git push google --tags v2.0.0
 ```
 
 Back in the Spinnaker UI, our build should've kicked off.
