@@ -28,6 +28,7 @@ In this workshop, you'll will:
 * https://medium.com/continuous-delivery-scale/scaling-spinnaker-at-netflix-part-1-8a5ae51ee6de
 * https://medium.com/continuous-delivery-scale/scaling-spinnaker-at-netflix-metrics-and-more-dbc4910b74e3
 * https://medium.com/continuous-delivery-scale/lifting-the-sail-how-spinnaker-maps-resources-to-kubernetes-57da9c1657ba
+* http://www.spinnaker.io/v1.0/docs/target-deployment-configuration#section-google-cloud-platform
 
 
 # Workshop setup
