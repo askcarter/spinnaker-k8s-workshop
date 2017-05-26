@@ -37,7 +37,7 @@ $ git clone https://github.com/askcarter/spinnaker-k8s-workshop
 
 Spinnaker takes up a lot of resources.  Plus we need read write access to GCS.
 ```
-$ gcloud container clusters create example --scopes=storage-rw --machine-type=n1-standard-2
+$ gcloud container clusters create workshop --scopes=storage-rw --machine-type=n1-standard-2
 ```
 
 ### Create Service Account
@@ -45,15 +45,8 @@ We need RW access because we’re storing data in gcs instead of minio.
  
 ```
 $ gcloud iam service-accounts create spinnaker-bootstrap-account --display-name spinnaker-bootstrap-account
-```
- 
-```
 $ SA_EMAIL=$(gcloud iam service-accounts list \
     --filter="displayName:spinnaker-bootstrap-account" \
-    --format='value(email)')
-```
-  
-```
 $ PROJECT=$(gcloud info --format='value(config.project)')
 ```
  
@@ -92,7 +85,7 @@ $ export PATH=$PATH:/usr/local/linux-amd64
 ```
  
 # Initialize local CLI
-# NOTE:  Does the directory matter for anything?
+NOTE:  Does the directory matter for anything?
 ```
 $ helm init
 ```
@@ -118,25 +111,20 @@ gcs:
 # Configure your Docker registries here
 accounts:
 - name: gcr
-   address: https://gcr.io
-   username: _json_key
-   password: '<INSERT YOUR SERVICE ACCOUNT JSON HERE>'
-   email: 1234@5678.com
+  address: https://gcr.io
+  username: _json_key
+  password: '<INSERT YOUR SERVICE ACCOUNT JSON HERE>'
+  email: 1234@5678.com
 ```
 
 # copy accounts.json text into 
-$ SERVICE_ACCOUNT_JSON=$(cat account.json)
-$ echo $SERVICE_ACCOUNT
-..
- 
 ```
-$ helm install stable/spinnaker -f values.yaml --set gcs.jsonKey="$SERVICE_ACCOUNT_JSON" --set 
-accounts.0.password="$SERVICE_ACCOUNT_JSON"
+$ cat account.json
 ```
  
 ```
-$ helm install stable/spinnaker -f updated-values.yaml
-```
+$ helm install stable/spinnaker -f values.yaml
+``` 
  
 If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
 ```
@@ -157,7 +145,7 @@ $ helm repo update
  
 install spinnaker
 ```
-$ helm install stable/spinnaker --name cd --namespace spinnaker --timeout 600 
+$ helm install stable/spinnaker --name cd --timeout 600 
 ```
  
 Let user know things are happening.  In another tab.  Errors will happen this is to be expected while the pods sync up.
