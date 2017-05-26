@@ -141,7 +141,7 @@ $ helm repo update
  
 install spinnaker
 ```
-$ helm install stable/spinnaker --name cd --timeout 600 
+$ helm install stable/spinnaker --name cd -f values.yaml --timeout 600 
 ```
  
 NOTE: This is going to take a while. 
