@@ -55,7 +55,7 @@ $ gcloud projects add-iam-policy-binding $PROJECT --role roles/storage.admin --m
 ```
  
 ```
-$ gcloud iam service-accounts keys create ~/.gcp/account.json --iam-account $SA_EMAIL
+$ gcloud iam service-accounts keys create account.json --iam-account $SA_EMAIL
 ```
 
 # Pipeline Overview
@@ -105,8 +105,11 @@ minio:
 # Enable gcs
 gcs:
   enabled: true
-  project: my-project-name
+  project: <my-project-name>
   jsonKey: '<INSERT CLOUD STORAGE JSON HERE>'
+ 
+# Name has to be unique in GCS.
+storageBucket: <my-project-name>-spinnaker 
  
 # Configure your Docker registries here
 accounts:
@@ -119,7 +122,8 @@ accounts:
 
 # copy accounts.json text into 
 ```
-$ cat account.json
+$ SERVICE_ACCOUNT_JSON=$(cat account.json)
+$ echo $SERVICE_ACCOUNT_JSON
 ```
  
 ```
