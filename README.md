@@ -157,9 +157,14 @@ $ echo $SERVICE_ACCOUNT_JSON
 
 ## Deploy Spinnaker Chart
 
-Everything in this helm chart will be labeled cd-spinnaker, so you can delete things like: 
+Everything in this helm chart will be labeled cd-spinnaker, so you can search for things like: 
 ```
-$ kubectl delete deployment -l app=cd-spinnaker
+$ kubectl get deployment -l app=cd-spinnaker
+```
+
+To delete everything
+```
+$ helm delete cd --purge
 ```
  
 get the latest list of charts
@@ -169,7 +174,7 @@ $ helm repo update
  
 install spinnaker
 ```
-$ helm install stable/spinnaker --name cd -f values.yaml --timeout 600 
+$ helm install stable/spinnaker --name cd -f values.yaml --timeout 1500 
 ```
  
 NOTE: This is going to take a while. 
