@@ -125,15 +125,7 @@ accounts:
 $ SERVICE_ACCOUNT_JSON=$(cat account.json)
 $ echo $SERVICE_ACCOUNT_JSON
 ```
- 
-```
-$ helm install stable/spinnaker -f values.yaml
-``` 
- 
-If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
-```
-$ helm upgrade cd charts/stable/spinnaker -f updated-values.yaml
-```
+
 
 ## Deploy Spinnaker Chart
 
@@ -152,11 +144,16 @@ install spinnaker
 $ helm install stable/spinnaker --name cd --timeout 600 
 ```
  
+NOTE: This is going to take a while. 
 Let user know things are happening.  In another tab.  Errors will happen this is to be expected while the pods sync up.
 ```
 $ kubectl get pods -w
 ```
 
+NOTE: If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
+```
+$ helm upgrade cd charts/stable/spinnaker -f updated-values.yaml
+```
 
 Access the spinnaker UI
 ```
