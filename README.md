@@ -148,13 +148,10 @@ accounts:
   password: '<SERVICE_ACCOUNT_JSON>'
   email: 1234@5678.com
 ```
-
-copy accounts.json text into values.yaml
+Replace <my-project-name> with your project name and copy accounts.json text into values.yaml.
 
 ```
-$ SERVICE_ACCOUNT_JSON=$(cat account.json)
-$ sed -i.bak "s#<SERVICE_ACCOUNT_JSON>#$(echo $SERVICE_ACCOUNT_JSON)#g" values.yaml
-$sed -i.bak2 "s#<my-project-name>#YOUR_PROJECT_NAME#g" tmp.yaml
+$ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo SERVICE_ACCOUNT_JSON
 ```
 
 
@@ -181,6 +178,8 @@ $ helm install stable/spinnaker --name cd -f values.yaml --timeout 1500
 ```
  
 NOTE: This is going to take a while. 
+
+### Misc / Monitor Progresss / Troubleshoot / Debug Installation
 Let user know things are happening.  In another tab.  Errors will happen this is to be expected while the pods sync up.
 ```
 $ kubectl get pods -w
@@ -191,7 +190,16 @@ NOTE: If you want to make a quick change.  Helm can do a blue green deployment v
 $ helm upgrade cd charts/stable/spinnaker -f updated-values.yaml
 ```
 
-Access the spinnaker UI
+Debugging can be done with
+```
+$ kubectl logs <pod name>
+```
+
+Common problems
+Front50 will fail if the GCS bucket name is not unique.
+
+
+## Access the spinnaker UI
 ```
 $ DECK_POD=$(kubectl get pods -l "component=deck,app=cd-spinnaker" -o jsonpath="{.items[0].metadata.name}")
 $ kubectl port-forward $DECK_POD 9000 >>/dev/null &
