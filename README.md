@@ -135,7 +135,7 @@ minio:
 gcs:
   enabled: true
   project: <my-project-name>
-  jsonKey: '<INSERT CLOUD STORAGE JSON HERE>'
+  jsonKey: '<SERVICE_ACCOUNT_JSON>'
  
 # Name has to be unique in GCS.
 storageBucket: <my-project-name>-spinnaker 
@@ -145,14 +145,16 @@ accounts:
 - name: gcr
   address: https://gcr.io
   username: _json_key
-  password: '<INSERT YOUR SERVICE ACCOUNT JSON HERE>'
+  password: '<SERVICE_ACCOUNT_JSON>'
   email: 1234@5678.com
 ```
 
-# copy accounts.json text into 
+copy accounts.json text into values.yaml
+
 ```
 $ SERVICE_ACCOUNT_JSON=$(cat account.json)
-$ echo $SERVICE_ACCOUNT_JSON
+$ sed -i.bak "s#<SERVICE_ACCOUNT_JSON>#$(echo $SERVICE_ACCOUNT_JSON)#g" values.yaml
+$sed -i.bak2 "s#<my-project-name>#YOUR_PROJECT_NAME#g" tmp.yaml
 ```
 
 
