@@ -38,35 +38,59 @@ In this workshop, you'll will:
 
 ## Account Setup
 ## Cloud Shell
+
+In this section you will start your [Google Cloud Shell](https://cloud.google.com/cloud-shell/docs/) and clone the lab code repository to it.
+
+1. Create a new Google Cloud Platform project: [https://console.developers.google.com/project](https://console.developers.google.com/project)
+
+1. Click the Google Cloud Shell icon in the top-right and wait for your shell to open:
+
+  ![](docs/img/cloud-shell.png)
+
+  ![](docs/img/cloud-shell-prompt.png)
+
+1. When the shell is open, set your default compute zone:
+
+  ```shell
+  $ gcloud config set compute/zone us-east1-d
+  ```
+
+
 ## Get the Code
 
-```
-$ git clone https://github.com/askcarter/spinnaker-k8s-workshop
-```
+1. Clone the lab repository in your cloud shell, then `cd` into that dir:
+
+  ```shell
+  $ git clone clone https://github.com/askcarter/spinnaker-k8s-workshop.git
+  Cloning into 'spinnaker-k8s-workshop'...
+  ...
+
+  $ cd spinnaker-k8s-workshop
+  ```
 
 ## Cluster Setup
 ### Create Cluster
 
 Spinnaker takes up a lot of resources.  Plus we need read write access to GCS.
-```
+```shell
 $ gcloud container clusters create workshop --scopes=storage-rw --machine-type=n1-standard-2
 ```
 
 ### Create Service Account
 We need RW access because we’re storing data in gcs instead of minio.
  
-```
+```shell
 $ gcloud iam service-accounts create spinnaker-bootstrap-account --display-name spinnaker-bootstrap-account
 $ SA_EMAIL=$(gcloud iam service-accounts list \
-    --filter="displayName:spinnaker-bootstrap-account" \
+    --filter="displayName:spinnaker-bootstrap-account"
 $ PROJECT=$(gcloud info --format='value(config.project)')
 ```
  
-```
+```shell
 $ gcloud projects add-iam-policy-binding $PROJECT --role roles/storage.admin --member serviceAccount:$SA_EMAIL
 ```
  
-```
+```shell
 $ gcloud iam service-accounts keys create account.json --iam-account $SA_EMAIL
 ```
 
@@ -86,19 +110,19 @@ Dev  tags commit -->[GSR] --> [GCR builds image based on tag] -> [Spin deploys o
  
 Download and install helm binary
 From https://github.com/kubernetes/helm/blob/master/docs/quickstart.md
-```
+```shell
 $ wget https://storage.googleapis.com/kubernetes-helm/helm-v2.4.2-linux-amd64.tar.gz
 $ sudo tar -C /usr/local -xzf helm-v2.4.2-linux-amd64.tar.gz
 ```
 
 Add Helm to PATH
-```
+```shell
 $ export PATH=$PATH:/usr/local/linux-amd64
 ```
  
 # Initialize local CLI
 NOTE:  Does the directory matter for anything?
-```
+```shell
 $ helm init
 ```
 
@@ -122,11 +146,11 @@ Spinnkaer has a lot of pieces and parts.  Below is a table listing everything.  
 
 
 TODO: Make this a sed operation
-```
+```shell
 $ nano values.yaml 
 ```
  
-```
+```shell
 # Disable minio the default
 minio:
   enabled: false
@@ -150,7 +174,7 @@ accounts:
 ```
 Replace <my-project-name> with your project name and copy accounts.json text into values.yaml.
 
-```
+```shell
 $ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo SERVICE_ACCOUNT_JSON
 ```
 
@@ -158,22 +182,22 @@ $ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo SERVICE_ACCOUNT_JSON
 ## Deploy Spinnaker Chart
 
 Everything in this helm chart will be labeled cd-spinnaker, so you can search for things like: 
-```
+```shell
 $ kubectl get deployment -l app=cd-spinnaker
 ```
 
 To delete everything
-```
+```shell
 $ helm delete cd --purge
 ```
  
 get the latest list of charts
-```
+```shell
 $ helm repo update
 ```
  
 install spinnaker
-```
+```shell
 $ helm install stable/spinnaker --name cd -f values.yaml --timeout 1500 
 ```
  
@@ -181,17 +205,17 @@ NOTE: This is going to take a while.
 
 ### Misc / Monitor Progresss / Troubleshoot / Debug Installation
 Let user know things are happening.  In another tab.  Errors will happen this is to be expected while the pods sync up.
-```
+```shell
 $ kubectl get pods -w
 ```
 
 NOTE: If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
-```
+```shell
 $ helm upgrade cd charts/stable/spinnaker -f updated-values.yaml
 ```
 
 Debugging can be done with
-```
+```shell
 $ kubectl logs <pod name>
 ```
 
@@ -200,7 +224,7 @@ Front50 will fail if the GCS bucket name is not unique.
 
 
 ## Access the spinnaker UI
-```
+```shell
 $ DECK_POD=$(kubectl get pods -l "component=deck,app=cd-spinnaker" -o jsonpath="{.items[0].metadata.name}")
 $ kubectl port-forward $DECK_POD 9000 >>/dev/null &
 ```
@@ -211,14 +235,14 @@ Visit the Spinnaker UI by opening your browser to: http://127.0.0.1:9000
 TODO: This should before here, possibly in the overview
 
 NOTE:  This may not be necessary here.  
-```
+```shell
 $ git clone https://github.com/askcarter/spinnaker-k8s-workshop
 $ cd spinnaker-k8s-workshop
 ```
 
 Pushing the image to gcr. 
 Note: Add v to semver so that we can use the v* tag as a build trigger
-```
+```shell
 $ gcloud container builds submit -t gcr.io/askcarter-production-gke/gceme:v1.0.0 .
 ```
 
@@ -245,14 +269,14 @@ Note: Want to build on tag, not every check-in (to save disk space)
 In gcr.io set up to: 
 Changes pushed to "v.*" tag will trigger a build of "gcr.io/askcarter-production-gke/$REPO_NAME:$TAG_NAME"
 
-```
+```shell
 $ gcloud beta source repos create gceme
 $ git config credential.helper gcloud.sh
 $ git remote add google https://source.developers.google.com/p/REPLACE_WITH_YOUR_PROJECT_ID/r/gceme
 $ git push --all google
 ```
 
-```
+```shell
 $ git tag -a v2.0.0 -m "my version 2.0.0"
 $ git push google v2.0.0
 ```
@@ -263,7 +287,7 @@ Back in the Spinnaker UI, our build should've kicked off.
 Use git to go back a commit, then push the image and bump the tag.
 I workshop have user make two commits (the 2nd of which is bad).  When the user pushes them, have them follow this process.
 
-```
+```shell
 # Change code
 $ git add <change>
 $ git commit -m "Working code fix."
@@ -279,7 +303,7 @@ $ git push google v3.0.0
 ```
 
 Roll back change
-```
+```shell
 $ git <rollback one commit>
 $ git commit -m "Rollbacked buggy code."
 $ git push google master
