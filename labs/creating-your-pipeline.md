@@ -1,5 +1,8 @@
 # Creating Your Pipeline
 
+TODO:  Should look this nice (except going to upload yaml for pipelines.
+https://www.spinnaker.io/guides/tutorials/codelabs/kubernetes-source-to-prod/
+
 ## Configuring Pipeline
 All changes should be done from pipeline (as other configs will get overwritten when the pipeline pushes new versions from the old template).
 
