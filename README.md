@@ -39,6 +39,7 @@ In this workshop, you'll will:
 * https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes
 * [Spinnaker Video Codelabs](https://www.youtube.com/watch?v=N9VnJlKn734&list=PL4yLrwUObNkttE526AAj_ykc5UlIPjz8m&index=1)
 * https://github.com/spinnaker/roer
+* https://www.spinnaker.io/guides/tutorials/codelabs/kubernetes-source-to-prod/
 
 
 
