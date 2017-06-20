@@ -1,0 +1,350 @@
+{
+  "appConfig": {},
+  "executionEngine": "v2",
+  "keepWaitingPipelines": true,
+  "lastModifiedBy": "anonymous",
+  "limitConcurrent": true,
+  "parallel": true,
+  "parameterConfig": [],
+  "stages": [
+    {
+      "clusters": [
+        {
+          "account": "local",
+          "application": "gceme",
+          "cloudProvider": "kubernetes",
+          "containers": [
+            {
+              "args": [
+                "-frontend=true",
+                "-port=80",
+                "-backend-service=http://gceme-backend-canary:8080"
+              ],
+              "command": [
+                "app"
+              ],
+              "envVars": [],
+              "imageDescription": {
+                "account": "gcr",
+                "fromTrigger": true,
+                "imageId": "gcr.io/vic-goog/gceme:latest-master",
+                "registry": "gcr.io",
+                "repository": "vic-goog/gceme",
+                "tag": "latest-master"
+              },
+              "imagePullPolicy": "ALWAYS",
+              "limits": {
+                "cpu": null,
+                "memory": null
+              },
+              "livenessProbe": null,
+              "name": "vic-goog-gceme",
+              "ports": [
+                {
+                  "containerPort": 80,
+                  "hostIp": null,
+                  "hostPort": null,
+                  "name": "http",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": null,
+              "requests": {
+                "cpu": null,
+                "memory": null
+              },
+              "volumeMounts": []
+            }
+          ],
+          "deployment": {
+            "deploymentStrategy": {
+              "rollingUpdate": {
+                "maxSurge": "1",
+                "maxUnavailable": "0"
+              },
+              "type": "RollingUpdate"
+            },
+            "enabled": true,
+            "minReadySeconds": 0,
+            "paused": false,
+            "progressRollbackSeconds": null,
+            "revisionHistoryLimit": 3,
+            "rollbackRevision": null
+          },
+          "events": [],
+          "freeFormDetails": "canary",
+          "hostNetwork": null,
+          "interestingHealthProviderNames": [
+            "KubernetesContainer",
+            "KubernetesPod"
+          ],
+          "loadBalancers": [
+            "gceme-frontend-canary"
+          ],
+          "namespace": "default",
+          "nodeSelector": {},
+          "podAnnotations": {},
+          "provider": "kubernetes",
+          "region": "default",
+          "replicaSetAnnotations": {
+            "deployment.kubernetes.io/desired-replicas": "1",
+            "deployment.kubernetes.io/max-replicas": "2",
+            "deployment.kubernetes.io/revision": "14"
+          },
+          "restartPolicy": null,
+          "securityContext": null,
+          "securityGroups": [],
+          "stack": "frontend",
+          "strategy": "",
+          "targetSize": 1,
+          "terminationGracePeriodSeconds": 30,
+          "volumeSources": []
+        }
+      ],
+      "name": "Deploy Frontend Canary",
+      "refId": "2",
+      "requisiteStageRefIds": [
+        "9"
+      ],
+      "type": "deploy"
+    },
+    {
+      "clusters": [
+        {
+          "account": "local",
+          "application": "gceme",
+          "cloudProvider": "kubernetes",
+          "containers": [
+            {
+              "args": [],
+              "command": [
+                "app"
+              ],
+              "envVars": [],
+              "imageDescription": {
+                "account": "gcr",
+                "fromTrigger": true,
+                "imageId": "gcr.io/vic-goog/gceme:latest-master",
+                "registry": "gcr.io",
+                "repository": "vic-goog/gceme",
+                "tag": "latest-master"
+              },
+              "imagePullPolicy": "ALWAYS",
+              "limits": {
+                "cpu": null,
+                "memory": null
+              },
+              "livenessProbe": null,
+              "name": "vic-goog-gceme",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "hostIp": null,
+                  "hostPort": null,
+                  "name": "http",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": null,
+              "requests": {
+                "cpu": null,
+                "memory": null
+              },
+              "volumeMounts": []
+            }
+          ],
+          "deployment": {
+            "deploymentStrategy": {
+              "rollingUpdate": {
+                "maxSurge": "1",
+                "maxUnavailable": "0"
+              },
+              "type": "RollingUpdate"
+            },
+            "enabled": true,
+            "minReadySeconds": 0,
+            "paused": false,
+            "progressRollbackSeconds": null,
+            "revisionHistoryLimit": 3,
+            "rollbackRevision": null
+          },
+          "events": [],
+          "freeFormDetails": "canary",
+          "hostNetwork": null,
+          "interestingHealthProviderNames": [
+            "KubernetesContainer",
+            "KubernetesPod"
+          ],
+          "loadBalancers": [
+            "gceme-backend-canary"
+          ],
+          "namespace": "default",
+          "nodeSelector": {},
+          "podAnnotations": {},
+          "provider": "kubernetes",
+          "region": "default",
+          "replicaSetAnnotations": {
+            "deployment.kubernetes.io/desired-replicas": "1",
+            "deployment.kubernetes.io/max-replicas": "2",
+            "deployment.kubernetes.io/revision": "11"
+          },
+          "restartPolicy": null,
+          "securityContext": null,
+          "securityGroups": [],
+          "stack": "backend",
+          "strategy": "",
+          "targetSize": 1,
+          "terminationGracePeriodSeconds": 30,
+          "volumeSources": []
+        }
+      ],
+      "name": "Deploy Backend Canary",
+      "refId": "3",
+      "requisiteStageRefIds": [
+        "9"
+      ],
+      "type": "deploy"
+    },
+    {
+      "account": "local",
+      "application": "gceme",
+      "cloudProvider": "kubernetes",
+      "cloudProviderType": "kubernetes",
+      "container": {
+        "args": [],
+        "command": [
+          "curl",
+          "http://gceme-backend-canary:8080"
+        ],
+        "envVars": [],
+        "imageDescription": {
+          "account": "gcr",
+          "fromTrigger": true,
+          "organization": "vic-goog",
+          "registry": "gcr.io",
+          "repository": "vic-goog/gceme",
+          "tag": "master-.*"
+        },
+        "name": "1494826281215",
+        "volumeMounts": []
+      },
+      "credentials": "local",
+      "name": "BE Integration Tests",
+      "namespace": "default",
+      "refId": "7",
+      "requisiteStageRefIds": [
+        "3"
+      ],
+      "type": "runJob",
+      "volumeSources": []
+    },
+    {
+      "account": "local",
+      "application": "gceme",
+      "cloudProvider": "kubernetes",
+      "cloudProviderType": "kubernetes",
+      "container": {
+        "args": [],
+        "command": [
+          "curl",
+          "http://gceme-frontend-canary:80"
+        ],
+        "envVars": [],
+        "imageDescription": {
+          "account": "gcr",
+          "fromTrigger": true,
+          "organization": "vic-goog",
+          "registry": "gcr.io",
+          "repository": "vic-goog/gceme",
+          "tag": "master-.*"
+        },
+        "name": "1494826281215",
+        "volumeMounts": []
+      },
+      "credentials": "local",
+      "name": "FE Integration Tests",
+      "namespace": "default",
+      "refId": "8",
+      "requisiteStageRefIds": [
+        "2"
+      ],
+      "type": "runJob",
+      "volumeSources": []
+    },
+    {
+      "account": "local",
+      "application": "gceme",
+      "cloudProvider": "kubernetes",
+      "cloudProviderType": "kubernetes",
+      "container": {
+        "args": [
+          "test"
+        ],
+        "command": [
+          "go"
+        ],
+        "envVars": [],
+        "imageDescription": {
+          "account": "gcr",
+          "fromTrigger": true,
+          "organization": "vic-goog",
+          "registry": "gcr.io",
+          "repository": "vic-goog/gceme",
+          "tag": ".*"
+        },
+        "name": "1495254072487",
+        "volumeMounts": []
+      },
+      "credentials": "local",
+      "name": "Unit Tests",
+      "namespace": "default",
+      "refId": "9",
+      "requisiteStageRefIds": [],
+      "type": "runJob",
+      "volumeSources": []
+    },
+    {
+      "application": "gceme",
+      "failPipeline": true,
+      "name": "Push to Production",
+      "pipeline": "8a348d13-f3d5-40c8-8bad-fe45f3419ba1",
+      "pipelineParameters": {},
+      "refId": "10",
+      "requisiteStageRefIds": [
+        "11"
+      ],
+      "type": "pipeline",
+      "waitForCompletion": false
+    },
+    {
+      "failPipeline": true,
+      "instructions": "Do you want to deploy this to production?",
+      "judgmentInputs": [],
+      "name": "Push to Production?",
+      "notifications": [],
+      "refId": "11",
+      "requisiteStageRefIds": [
+        "7",
+        "8"
+      ],
+      "type": "manualJudgment"
+    }
+  ],
+  "triggers": [
+    {
+      "account": "gcr",
+      "application": "gceme",
+      "enabled": true,
+      "organization": "vic-goog",
+      "pipeline": "61372c70-62af-422f-9565-e1975a758612",
+      "registry": "gcr.io",
+      "repository": "vic-goog/gceme",
+      "status": [
+        "successful"
+      ],
+      "tag": "latest-master",
+      "type": "docker"
+    }
+  ],
+  "updateTs": "1495313574081"
+}
