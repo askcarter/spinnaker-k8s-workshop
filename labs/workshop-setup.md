@@ -9,9 +9,9 @@ In this section you will start your [Google Cloud Shell](https://cloud.google.co
 
 1. Click the Google Cloud Shell icon in the top-right and wait for your shell to open:
 
-  ![](docs/img/cloud-shell.png)
+  ![](../docs/img/cloud-shell.png)
 
-  ![](docs/img/cloud-shell-prompt.png)
+  ![](../docs/img/cloud-shell-prompt.png)
 
 1. When the shell is open, set your default compute zone:
 
