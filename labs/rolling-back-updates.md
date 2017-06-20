@@ -22,7 +22,7 @@ Roll back change
 $ git <rollback one commit>
 $ git commit -m "Rollbacked buggy code."
 $ git push google master
-# $  git tag -a v4.0.0 -m "my version 4.0.0"
+$ git tag -a v4.0.0 -m "my version 4.0.0"
 $ git push google v4.0.0
 ```
 
