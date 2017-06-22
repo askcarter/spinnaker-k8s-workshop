@@ -5,8 +5,10 @@ Now we'll use a build trigger to connect our Container Registry to Spinnaker, so
 
 Note: Want to build on tag, not every check-in (to save disk space)
 
-In gcr.io set up to: 
-Changes pushed to "v.*" tag will trigger a build of "gcr.io/askcarter-production-gke/$REPO_NAME:$TAG_NAME"
+![](../docs/img/Setup-build-trigger.png)
+
+In gcr.io set the build trigger to: 
+ 'Changes pushed to "v.*" tag will trigger a build of "gcr.io/askcarter-production-gke/$REPO_NAME:$TAG_NAME"'
 
 ```shell
 $ gcloud beta source repos create gceme
