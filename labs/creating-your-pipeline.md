@@ -41,40 +41,51 @@ Copy the settings for the various load balancers from the images below.
 
 ![](../docs/img/lb-be.png)
 For the backend production Load Balancer, fill in the following settings:
-Stack: backend
-Name: http
-Port: 8080
-Target Port: 8080
+
+| Field | Value |
+| --- | --- |
+| Stack | backend |
+| Name | http |
+| Port | 8080 |
+| Target Port | 8080 |
 
 ![](../docs/img/lb-be-c.png)
-For the backend production Load Balancer:
 For the backend canary Load Balancer, fill in the following settings:
-Stack: frontend
-Detail: canary
-Name: http
-Port: 8080
-Target Port: 8080
-NodePort: 32691
+
+| Field | Value |
+| --- | --- |
+| Stack | frontend |
+| Detail | canary |
+| Name | http |
+| Port | 8080 |
+| Target Port | 8080 |
+| NodePort | 32691 |
 
 
 ![](../docs/img/lb-fe.png)
-For the frontend production Load Balancer:
-Stack: frontend
-Name: http
-Port: 80
-Target Port: 80
-NodePort: 32691
-Type: LoadBalancer
+For the frontend production Load Balancer, fill in the follow settings:
+
+| Field | Value |
+| --- | --- |
+| Stack | frontend |
+| Name | http |
+| Port | 80 |
+| Target Port | 80 |
+| NodePort | 32691 |
+| Type | LoadBalancer |
 
 ![](../docs/img/lb-fe-c.png)
-For the frontend canary Load Balancer:
-Stack: frontend
-Detail: canary
-Name: http
-Port: 80
-Target Port: 80
-NodePort: 30239
-Type: LoadBalancer
+For the frontend canary Load Balancer, fill in the following settings:
+
+| Field | Value |
+| --- | --- |
+| Stack | frontend |
+| Detail | canary |
+| Name | http |
+| Port | 80 |
+| Target Port | 80 |
+| NodePort | 30239 |
+| Type | LoadBalancer | 
 
 ## Create Deploy Pipeline
 
