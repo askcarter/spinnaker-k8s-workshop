@@ -89,3 +89,12 @@ For the frontend canary Load Balancer, fill in the following settings:
 
 ## Create Deploy Pipeline
 
+Click "Create Pipeline or Strategy".
+
+Name the new Pipeline "Deploy".
+
+In the Pipeline Actions dropdown, click "Edit as Json".
+
+Replace the JSON that displays with the contents on pipeline.json.
+
+
