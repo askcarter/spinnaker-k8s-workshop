@@ -18,7 +18,7 @@
               "args": [
                 "-frontend=true",
                 "-port=80",
-                "-backend-service=http://gceme-backend-canary:8080"
+                "-backend-service=http://demo-backend-canary:8080"
               ],
               "command": [
                 "app"
@@ -32,7 +32,7 @@
                 "repository": "askcarter-production-gke/gceme2",
                 "tag": ""
               },
-              "imagePullPolicy": "IFNOTPRESENT",
+              "imagePullPolicy": "ALWAYS",
               "limits": {
                 "cpu": null,
                 "memory": null
@@ -125,12 +125,12 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme2:v*",
+                "imageId": "gcr.io/askcarter-production-gke/gceme2:v.*",
                 "registry": "gcr.io",
                 "repository": "askcarter-production-gke/gceme2",
-                "tag": "v*"
+                "tag": "v.*"
               },
-              "imagePullPolicy": "IFNOTPRESENT",
+              "imagePullPolicy": "ALWAYS",
               "limits": {
                 "cpu": null,
                 "memory": null
@@ -226,7 +226,7 @@
           "organization": "askcarter-production-gke",
           "registry": "gcr.io",
           "repository": "askcarter-production-gke/gceme2",
-          "tag": "v*"
+          "tag": "v.*"
         },
         "name": "1494826281215",
         "volumeMounts": []
@@ -259,7 +259,7 @@
           "organization": "askcarter-production-gke",
           "registry": "gcr.io",
           "repository": "askcarter-production-gke/gceme2",
-          "tag": "v*"
+          "tag": "v.*"
         },
         "name": "1494826281215",
         "volumeMounts": []
@@ -293,7 +293,7 @@
           "organization": "askcarter-production-gke",
           "registry": "gcr.io",
           "repository": "askcarter-production-gke/gceme2",
-          "tag": "v*"
+          "tag": "v.*"
         },
         "name": "1495254072487",
         "volumeMounts": []
@@ -333,12 +333,12 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme2:v*",
+                "imageId": "gcr.io/askcarter-production-gke/gceme2:v.*",
                 "registry": "gcr.io",
                 "repository": "askcarter-production-gke/gceme2",
-                "tag": "v*"
+                "tag": "v.*"
               },
-              "imagePullPolicy": "IFNOTPRESENT",
+              "imagePullPolicy": "ALWAYS",
               "limits": {
                 "cpu": null,
                 "memory": null
@@ -429,12 +429,12 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme2:v*",
+                "imageId": "gcr.io/askcarter-production-gke/gceme2:v.*",
                 "registry": "gcr.io",
                 "repository": "askcarter-production-gke/gceme2",
-                "tag": "v*"
+                "tag": "v.*"
               },
-              "imagePullPolicy": "IFNOTPRESENT",
+              "imagePullPolicy": "ALWAYS",
               "limits": {
                 "cpu": null,
                 "memory": null
@@ -516,7 +516,7 @@
   "triggers": [
     {
       "account": "gcr",
-      "application": "gceme",
+      "application": "demo",
       "enabled": true,
       "organization": "askcarter-production-gke",
       "pipeline": "61372c70-62af-422f-9565-e1975a758612",
