@@ -11,7 +11,7 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
@@ -115,7 +115,7 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
@@ -323,7 +323,7 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
@@ -419,7 +419,7 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
