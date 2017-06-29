@@ -27,7 +27,7 @@ In this section you will start your [Google Cloud Shell](https://cloud.google.co
 1. Clone the lab repository in your cloud shell, then `cd` into that dir:
 
   ```shell
-  $ git clone clone https://github.com/askcarter/spinnaker-k8s-workshop.git
+  $ git clone https://github.com/askcarter/spinnaker-k8s-workshop.git
   Cloning into 'spinnaker-k8s-workshop'...
   ...
 
