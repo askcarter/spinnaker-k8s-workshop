@@ -75,15 +75,62 @@ accounts:
   email: 1234@5678.com
 ```
 
-
-
 ## Deploy Spinnaker Chart
 
+### Temporary get the updated chart
+```shell
+$ git clone https://github.com/kubernetes/charts charts
+$ cd charts
+
+$ git fetch origin pull/1338/head:test-chart
+$ git checkout test-chart
+
+# update the dependencies
+$ cd stable/spinnaker/
+$ helm dep up 
+
+$ cd ../../../
+```
+
+## Install spinnaker
+NOTE: This is going to take a while. 
+```shell
+$ helm install ./charts/stable/spinnaker --name cd -f ./config/values.yaml --timeout 600
+```
+In another tab, you can monitor the progress of the installation. 
+Errors will happen this is to be expected while the pods sync up.
+```shell
+$ kubectl get pods -w
+```
+
+## Access the spinnaker UI
+
+```shell
+$ DECK_POD=$(kubectl get pods -l "component=deck,app=cd-spinnaker"  \
+    -o jsonpath="{.items[0].metadata.name}")
+$ kubectl port-forward $DECK_POD 8080:9000 >>/dev/null &
+```
+ 
+Visit the Spinnaker UI by opening your browser to: http://127.0.0.1:9000
+
+
+### Misc / Monitor Progresss / Troubleshoot / Debug Installation
 Everything in this helm chart will be labeled cd-spinnaker, so you can search for things like: 
 ```shell
 $ kubectl get deployment -l app=cd-spinnaker
 ```
 
+NOTE: If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
+```shell
+$ helm upgrade cd ./charts/stable/spinnaker -f updated-values.yaml
+```
+
+Debugging can be done with
+```shell
+$ kubectl logs <pod name>
+```
+
+TODO:  Move this somewhere else.
 To delete everything
 ```shell
 $ helm delete cd --purge
@@ -93,38 +140,6 @@ get the latest list of charts
 ```shell
 $ helm repo update
 ```
- 
-install spinnaker
-```shell
-$ helm install stable/spinnaker --name cd -f values.yaml --timeout 1500 
-```
- 
-NOTE: This is going to take a while. 
-
-### Misc / Monitor Progresss / Troubleshoot / Debug Installation
-Let user know things are happening.  In another tab.  Errors will happen this is to be expected while the pods sync up.
-```shell
-$ kubectl get pods -w
-```
-
-NOTE: If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
-```shell
-$ helm upgrade cd charts/stable/spinnaker -f updated-values.yaml
-```
-
-Debugging can be done with
-```shell
-$ kubectl logs <pod name>
-```
 
 Common problems
 Front50 will fail if the GCS bucket name is not unique.
-
-
-## Access the spinnaker UI
-```shell
-$ DECK_POD=$(kubectl get pods -l "component=deck,app=cd-spinnaker" -o jsonpath="{.items[0].metadata.name}")
-$ kubectl port-forward $DECK_POD 9000 >>/dev/null &
-```
- 
-Visit the Spinnaker UI by opening your browser to: http://127.0.0.1:9000
