@@ -89,6 +89,12 @@ For the frontend canary Load Balancer, fill in the following settings:
 
 ## Create Deploy Pipeline
 
+In the command prompt, updated pipeline json description.  Replace ```YOUR_PROJECT_ID``` with your project id.
+
+```shell
+$ sed -i.bak "s/REPLACE-ME/YOUR_PROJECT_ID/g" pipeline.json
+```
+
 Click "Create Pipeline or Strategy".
 
 Name the new Pipeline "Deploy".
