@@ -48,7 +48,8 @@ We need RW access because we’re storing data in gcs instead of minio.
  
 ```shell
 $ gcloud iam service-accounts create spinnaker-bootstrap-account --display-name spinnaker-bootstrap-account
-$ SA_EMAIL=$(gcloud iam service-accounts list --filter="displayName:spinnaker-bootstrap-account"
+$ SA_EMAIL=$(gcloud iam service-accounts list \
+    --filter="displayName:spinnaker-bootstrap-account")
 $ PROJECT=$(gcloud info --format='value(config.project)')
 ```
  
