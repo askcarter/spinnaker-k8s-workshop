@@ -1,7 +1,5 @@
 # Installing Spinnnaker
 
-## Spinnaker Overview
-
 Spinnkaer has a lot of pieces and parts.  Below is a table listing everything.  You don't need to know *any* of this for the workshop, but it's here for completeness.
 
 | Servivces | Port | Description |
