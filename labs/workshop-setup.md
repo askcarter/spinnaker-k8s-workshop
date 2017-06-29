@@ -4,9 +4,7 @@
 1. A Google Cloud Platform Account
 1. After signing into your GCP Account, [Click here to enable the Google Compute Engine and Google Container Engine APIs](https://console.cloud.google.com/flows/enableapi?apiid=compute_component,container)
 
-## Cloud Shell
-
-In this section you will start your [Google Cloud Shell](https://cloud.google.com/cloud-shell/docs/) and clone the lab code repository to it.
+## Setup
 
 1. Create a new Google Cloud Platform project: [https://console.cloud.google.com](https://console.cloud.google.com/)
 
@@ -18,7 +16,7 @@ In this section you will start your [Google Cloud Shell](https://cloud.google.co
 
 ## Get the Code
 
-1. Clone the lab repository in your cloud shell, then `cd` into that dir:
+1. Clone the lab repository in your shell, then `cd` into that dir:
 
   ```shell
   $ git clone https://github.com/askcarter/spinnaker-k8s-workshop.git
