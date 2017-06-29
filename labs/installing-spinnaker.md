@@ -1,8 +1,22 @@
 # Installing Spinnnaker
 
-## Install Helm
-[OPTIONAL] make sure there’s a k8s cluster?
- 
+## Spinnaker Overview
+
+Spinnkaer has a lot of pieces and parts.  Below is a table listing everything.  You don't need to know *any* of this for the workshop, but it's here for completeness.
+
+| Servivces | Port | Description |
+| --- | --- | --- |
+| Deck	| 9000 | Deck is a static AngularJS-based UI. |
+| Clouddriver	| 7002 | Cloud Driver integrates with each cloud provider (AWS, GCP, Azure, etc.). It is responsible for all cloud provider-specific read and write operations. |
+| Echo	| 8089 | Echo provides Spinnaker’s notification support, including integrations with Slack, Hipchat, SMS (via Twilio) and Email. |
+| Front50	| 8080 | Front50 stores all application, pipeline and notification metadata. |
+| Gate	| 8084 | Gate exposes APIs for all external consumers of Spinnaker (including deck). It is the front door to Spinnaker. |
+| Igor	| 8088 | Igor facilitates the use of Jenkins in Spinnaker pipelines (a pipeline can be triggered by a Jenkins job or invoke a Jenkins job) |
+| Orca	| 8083 | Orca handles pipeline and task orchestration (ie. starting a cloud driver operation and waiting until it completes). |
+| Rosco	| 8087 | Rosco is a packer-based bakery. We believe in immutable infrastructure and rosco provides a means to take a Debian or Red Hat package and turn it into an Amazon Machine Image. Don’t worry, it also supports Google Compute Engine and Azure images. |
+| Fiat	| 7003 | Fiat is the authorization server for the Spinnaker system.  It exposes a RESTful interface for querying the access permissions for a particular user. |
+
+## Install Helm 
 Download and install helm binary
 From https://github.com/kubernetes/helm/blob/master/docs/quickstart.md
 ```shell
@@ -23,23 +37,18 @@ $ helm init
 
 ## Configure Spinnaker
 
-### Spinnaker Overview
+First, update the values file with your project id.
+```shell
+$ sed -i.bak s/REPLACE_ME/$(gcloud info --format='value(config.project)')/g ./config/values.yaml
+```
 
-Spinnkaer has a lot of pieces and parts.  Below is a table listing everything.  You don't need to know *any* of this for the workshop, but it's here for completeness.
+Next, copy your service account credentials into values.yaml.
 
-| Servivces | Port | Description |
-| --- | --- | --- |
-| Deck	| 9000 | Deck is a static AngularJS-based UI. |
-| Clouddriver	| 7002 | Cloud Driver integrates with each cloud provider (AWS, GCP, Azure, etc.). It is responsible for all cloud provider-specific read and write operations. |
-| Echo	| 8089 | Echo provides Spinnaker’s notification support, including integrations with Slack, Hipchat, SMS (via Twilio) and Email. |
-| Front50	| 8080 | Front50 stores all application, pipeline and notification metadata. |
-| Gate	| 8084 | Gate exposes APIs for all external consumers of Spinnaker (including deck). It is the front door to Spinnaker. |
-| Igor	| 8088 | Igor facilitates the use of Jenkins in Spinnaker pipelines (a pipeline can be triggered by a Jenkins job or invoke a Jenkins job) |
-| Orca	| 8083 | Orca handles pipeline and task orchestration (ie. starting a cloud driver operation and waiting until it completes). |
-| Rosco	| 8087 | Rosco is a packer-based bakery. We believe in immutable infrastructure and rosco provides a means to take a Debian or Red Hat package and turn it into an Amazon Machine Image. Don’t worry, it also supports Google Compute Engine and Azure images. |
-| Fiat	| 7003 | Fiat is the authorization server for the Spinnaker system.  It exposes a RESTful interface for querying the access permissions for a particular user. |
+Copy the output form the following command into values.yaml, replacing ```<SERVICE_ACCOUNT_JSON>```
 
-
+```shell
+$ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo SERVICE_ACCOUNT_JSON
+```
 TODO: Make this a sed operation
 ```shell
 $ nano values.yaml 
@@ -67,11 +76,7 @@ accounts:
   password: '<SERVICE_ACCOUNT_JSON>'
   email: 1234@5678.com
 ```
-Replace <my-project-name> with your project name and copy accounts.json text into values.yaml.
 
-```shell
-$ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo SERVICE_ACCOUNT_JSON
-```
 
 
 ## Deploy Spinnaker Chart
