@@ -7,7 +7,7 @@ It's time to push code into production, cross your fingers, and pray! Right? On 
 And that's where [Kubernetes](https://www.kubernetes.io) and [Spinnaker](https://www.spinnaker.io), the continuous delivery platform come in. 
 In this workshop we'll setup a CICD pipeline and explain the pros and cons, along the way.
 
-[![See the pipleine you'll create here!](https://img.youtube.com/vi/dpbWpzAs-RwD/0.jpg)](https://youtu.be/dpbWpzAs-RwD)
+[![See the pipleine you'll create here!](http://img.youtube.com/vi/dpbWpzAs-Rw/0.jpg)](https://youtu.be/dpbWpzAs-RwD)
 
 In this workshop, you'll will:
 * Setting up an example Continuous Delivery pipeline from scratch.
