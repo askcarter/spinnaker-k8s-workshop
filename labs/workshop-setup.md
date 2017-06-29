@@ -1,11 +1,13 @@
 # Workshop setup
 
 ## Account Setup
+
+
 ## Cloud Shell
 
 In this section you will start your [Google Cloud Shell](https://cloud.google.com/cloud-shell/docs/) and clone the lab code repository to it.
 
-1. Create a new Google Cloud Platform project: [https://console.developers.google.com/project](https://console.developers.google.com/project)
+1. Create a new Google Cloud Platform project: [https://console.cloud.google.com](https://console.cloud.google.com/)
 
 1. Click the Google Cloud Shell icon in the top-right and wait for your shell to open:
 
