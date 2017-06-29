@@ -10,13 +10,7 @@ In this section you will start your [Google Cloud Shell](https://cloud.google.co
 
 1. Create a new Google Cloud Platform project: [https://console.cloud.google.com](https://console.cloud.google.com/)
 
-1. Click the Google Cloud Shell icon in the top-right and wait for your shell to open:
-
-  ![](../docs/img/cloud-shell.png)
-
-  ![](../docs/img/cloud-shell-prompt.png)
-
-1. When the shell is open, set your default compute zone:
+1. In the shell, set your default compute zone:
 
   ```shell
   $ gcloud config set compute/zone us-east1-d
