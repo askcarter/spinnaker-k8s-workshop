@@ -27,9 +27,9 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme (Tag resolved at runtime)",
+                "imageId": "gcr.io/REPLACE_ME/gceme (Tag resolved at runtime)",
                 "registry": "gcr.io",
-                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "repository": "REPLACE_ME/gceme",
                 "tag": ""
               },
               "imagePullPolicy": "ALWAYS",
@@ -38,7 +38,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "<YOUR_PROJECT_ID>-gceme",
+              "name": "REPLACE_ME-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -125,9 +125,9 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme:v.*",
+                "imageId": "gcr.io/REPLACE_ME/gceme:v.*",
                 "registry": "gcr.io",
-                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "repository": "REPLACE_ME/gceme",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
@@ -136,7 +136,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "<YOUR_PROJECT_ID>-gceme",
+              "name": "REPLACE_ME-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -223,9 +223,9 @@
         "imageDescription": {
           "account": "gcr",
           "fromTrigger": true,
-          "organization": "<YOUR_PROJECT_ID>",
+          "organization": "REPLACE_ME",
           "registry": "gcr.io",
-          "repository": "<YOUR_PROJECT_ID>/gceme",
+          "repository": "REPLACE_ME/gceme",
           "tag": "v.*"
         },
         "name": "1494826281215",
@@ -256,9 +256,9 @@
         "imageDescription": {
           "account": "gcr",
           "fromTrigger": true,
-          "organization": "<YOUR_PROJECT_ID>",
+          "organization": "REPLACE_ME",
           "registry": "gcr.io",
-          "repository": "<YOUR_PROJECT_ID>/gceme",
+          "repository": "REPLACE_ME/gceme",
           "tag": "v.*"
         },
         "name": "1494826281215",
@@ -290,9 +290,9 @@
         "imageDescription": {
           "account": "gcr",
           "fromTrigger": true,
-          "organization": "<YOUR_PROJECT_ID>",
+          "organization": "REPLACE_ME",
           "registry": "gcr.io",
-          "repository": "<YOUR_PROJECT_ID>/gceme",
+          "repository": "REPLACE_ME/gceme",
           "tag": "v.*"
         },
         "name": "1495254072487",
@@ -333,9 +333,9 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme:v.*",
+                "imageId": "gcr.io/REPLACE_ME/gceme:v.*",
                 "registry": "gcr.io",
-                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "repository": "REPLACE_ME/gceme",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
@@ -344,7 +344,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "<YOUR_PROJECT_ID>-gceme",
+              "name": "REPLACE_ME-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -429,9 +429,9 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme:v.*",
+                "imageId": "gcr.io/REPLACE_ME/gceme:v.*",
                 "registry": "gcr.io",
-                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "repository": "REPLACE_ME/gceme",
                 "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
@@ -440,7 +440,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "<YOUR_PROJECT_ID>-gceme",
+              "name": "REPLACE_ME-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -518,10 +518,10 @@
       "account": "gcr",
       "application": "demo",
       "enabled": true,
-      "organization": "<YOUR_PROJECT_ID>",
+      "organization": "REPLACE_ME",
       "pipeline": "61372c70-62af-422f-9565-e1975a758612",
       "registry": "gcr.io",
-      "repository": "<YOUR_PROJECT_ID>/gceme",
+      "repository": "REPLACE_ME/gceme",
       "status": [
         "successful"
       ],
