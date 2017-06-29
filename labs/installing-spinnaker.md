@@ -45,7 +45,7 @@ Next, copy your service account credentials into values.yaml.
 Copy the output form the following command into values.yaml, replacing ```<SERVICE_ACCOUNT_JSON>```
 
 ```shell
-$ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo SERVICE_ACCOUNT_JSON
+$ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo $SERVICE_ACCOUNT_JSON
 ```
 TODO: Make this a sed operation
 ```shell
