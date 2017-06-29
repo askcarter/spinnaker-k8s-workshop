@@ -3,7 +3,7 @@
   "executionEngine": "v2",
   "keepWaitingPipelines": true,
   "lastModifiedBy": "anonymous",
-  "limitConcurrent": true,
+  "limitConcurrent": false,
   "parallel": true,
   "parameterConfig": [],
   "stages": [
@@ -11,7 +11,7 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
@@ -27,10 +27,10 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme:v*",
+                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme (Tag resolved at runtime)",
                 "registry": "gcr.io",
-                "repository": "askcarter-production-gke/gceme",
-                "tag": "v*"
+                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "tag": ""
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -38,7 +38,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "askcarter-production-gke-gceme",
+              "name": "<YOUR_PROJECT_ID>-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -115,22 +115,20 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
               "args": [],
-              "command": [
-                "app"
-              ],
+              "command": [],
               "envVars": [],
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme:v*",
+                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme:v.*",
                 "registry": "gcr.io",
-                "repository": "askcarter-production-gke/gceme",
-                "tag": "v*"
+                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -138,7 +136,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "askcarter-production-gke-gceme",
+              "name": "<YOUR_PROJECT_ID>-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -225,10 +223,10 @@
         "imageDescription": {
           "account": "gcr",
           "fromTrigger": true,
-          "organization": "askcarter-production-gke",
+          "organization": "<YOUR_PROJECT_ID>",
           "registry": "gcr.io",
-          "repository": "askcarter-production-gke/gceme",
-          "tag": "v*"
+          "repository": "<YOUR_PROJECT_ID>/gceme",
+          "tag": "v.*"
         },
         "name": "1494826281215",
         "volumeMounts": []
@@ -258,10 +256,10 @@
         "imageDescription": {
           "account": "gcr",
           "fromTrigger": true,
-          "organization": "askcarter-production-gke",
+          "organization": "<YOUR_PROJECT_ID>",
           "registry": "gcr.io",
-          "repository": "askcarter-production-gke/gceme",
-          "tag": "v*"
+          "repository": "<YOUR_PROJECT_ID>/gceme",
+          "tag": "v.*"
         },
         "name": "1494826281215",
         "volumeMounts": []
@@ -292,10 +290,10 @@
         "imageDescription": {
           "account": "gcr",
           "fromTrigger": true,
-          "organization": "askcarter-production-gke",
+          "organization": "<YOUR_PROJECT_ID>",
           "registry": "gcr.io",
-          "repository": "askcarter-production-gke/gceme",
-          "tag": "v*"
+          "repository": "<YOUR_PROJECT_ID>/gceme",
+          "tag": "v.*"
         },
         "name": "1495254072487",
         "volumeMounts": []
@@ -325,22 +323,20 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
               "args": [],
-              "command": [
-                "app"
-              ],
+              "command": [],
               "envVars": [],
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme:v*",
+                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme:v.*",
                 "registry": "gcr.io",
-                "repository": "askcarter-production-gke/gceme",
-                "tag": "v*"
+                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -348,7 +344,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "askcarter-production-gke-gceme",
+              "name": "<YOUR_PROJECT_ID>-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -423,26 +419,20 @@
       "clusters": [
         {
           "account": "local",
-          "application": "info",
+          "application": "demo",
           "cloudProvider": "kubernetes",
           "containers": [
             {
-              "args": [
-                "-frontend=true",
-                "-port=80",
-                "-backend-service=http://demo-backend:8080"
-              ],
-              "command": [
-                "app"
-              ],
+              "args": [],
+              "command": [],
               "envVars": [],
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/askcarter-production-gke/gceme:v*",
+                "imageId": "gcr.io/<YOUR_PROJECT_ID>/gceme:v.*",
                 "registry": "gcr.io",
-                "repository": "askcarter-production-gke/gceme",
-                "tag": "v*"
+                "repository": "<YOUR_PROJECT_ID>/gceme",
+                "tag": "v.*"
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -450,7 +440,7 @@
                 "memory": null
               },
               "livenessProbe": null,
-              "name": "askcarter-production-gke-gceme",
+              "name": "<YOUR_PROJECT_ID>-gceme",
               "ports": [
                 {
                   "containerPort": 80,
@@ -526,18 +516,18 @@
   "triggers": [
     {
       "account": "gcr",
-      "application": "gceme",
+      "application": "demo",
       "enabled": true,
-      "organization": "askcarter-production-gke",
+      "organization": "<YOUR_PROJECT_ID>",
       "pipeline": "61372c70-62af-422f-9565-e1975a758612",
       "registry": "gcr.io",
-      "repository": "askcarter-production-gke/gceme",
+      "repository": "<YOUR_PROJECT_ID>/gceme",
       "status": [
         "successful"
       ],
-      "tag": "v*",
+      "tag": "",
       "type": "docker"
     }
   ],
-  "updateTs": "1498164991703"
+  "updateTs": "1498169343985"
 }
