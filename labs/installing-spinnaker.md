@@ -49,7 +49,7 @@ $ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo $SERVICE_ACCOUNT_JSON
 ```
 TODO: Make this a sed operation
 ```shell
-$ nano values.yaml 
+$ nano ./config/values.yaml 
 ```
  
 ```shell
