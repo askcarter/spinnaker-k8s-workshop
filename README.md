@@ -15,13 +15,13 @@ In this workshop, you'll will:
 
 ## Labs
 
-* [Workshop Setup](labs/workshop-setup.md)
-* [Pipeline Overview](labs/pipeline-overview.md)
-* [Installing Spinnaker](labs/installing-spinnaker.md)
-* [Triggering Deployments](labs/triggering-deployments.md)
-* [Creating Your Pipeline](labs/creating-your-pipeline.md)
-* [Automating Your Pipeline](labs/automating-your-pipeline.md)
-* [Rolling Back Updates](labs/rolling-back-updates.md)
+1. [Workshop Setup](labs/workshop-setup.md)
+1. [Pipeline Overview](labs/pipeline-overview.md)
+1. [Installing Spinnaker](labs/installing-spinnaker.md)
+1. [Triggering Deployments](labs/triggering-deployments.md)
+1. [Creating Your Pipeline](labs/creating-your-pipeline.md)
+1. [Automating Your Pipeline](labs/automating-your-pipeline.md)
+1. [Rolling Back Updates](labs/rolling-back-updates.md)
 
 ## TODO
 
