@@ -23,6 +23,12 @@ In this workshop, you'll will:
 * [Automating Your Pipeline](labs/automating-your-pipeline.md)
 * [Rolling Back Updates](labs/rolling-back-updates.md)
 
+## TODO
+
+* IAM / RBAC Integration
+* Halyard Setup
+* 
+
 ## What Next?
 
 * PLACEHOLDER
