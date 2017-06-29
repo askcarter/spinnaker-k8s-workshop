@@ -1,7 +1,8 @@
 # Workshop setup
 
-## Account Setup
-
+### Prerequisites
+1. A Google Cloud Platform Account
+1. After signing into your GCP Account, [Click here to enable the Google Compute Engine and Google Container Engine APIs](https://console.cloud.google.com/flows/enableapi?apiid=compute_component,container)
 
 ## Cloud Shell
 
@@ -21,7 +22,6 @@ In this section you will start your [Google Cloud Shell](https://cloud.google.co
   $ gcloud config set compute/zone us-east1-d
   ```
 
-
 ## Get the Code
 
 1. Clone the lab repository in your cloud shell, then `cd` into that dir:
@@ -35,6 +35,7 @@ In this section you will start your [Google Cloud Shell](https://cloud.google.co
   ```
 
 ## Cluster Setup
+
 ### Create Cluster
 
 Spinnaker takes up a lot of resources.  Plus we need read write access to GCS.
