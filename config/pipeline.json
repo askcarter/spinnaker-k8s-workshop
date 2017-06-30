@@ -125,10 +125,10 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/REPLACE_ME/gceme:v.*",
+                "imageId": "gcr.io/REPLACE_ME/gceme (Tag resolved at runtime)",
                 "registry": "gcr.io",
                 "repository": "REPLACE_ME/gceme",
-                "tag": "v.*"
+                "tag": ""
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -333,10 +333,10 @@
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/REPLACE_ME/gceme:v.*",
+                "imageId": "gcr.io/REPLACE_ME/gceme (Tag resolved at runtime)",
                 "registry": "gcr.io",
                 "repository": "REPLACE_ME/gceme",
-                "tag": "v.*"
+                "tag": ""
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -423,16 +423,22 @@
           "cloudProvider": "kubernetes",
           "containers": [
             {
-              "args": [],
-              "command": [],
+              "args": [
+                "-frontend=true",
+                "-port=80",
+                "-backend-service=http://demo-backend-canary:8080"
+              ],
+              "command": [
+                "app"
+              ],
               "envVars": [],
               "imageDescription": {
                 "account": "gcr",
                 "fromTrigger": true,
-                "imageId": "gcr.io/REPLACE_ME/gceme:v.*",
+                "imageId": "gcr.io/REPLACE_ME/gceme (Tag resolved at runtime)",
                 "registry": "gcr.io",
                 "repository": "REPLACE_ME/gceme",
-                "tag": "v.*"
+                "tag": ""
               },
               "imagePullPolicy": "ALWAYS",
               "limits": {
@@ -529,5 +535,5 @@
       "type": "docker"
     }
   ],
-  "updateTs": "1498169343985"
+  "updateTs": "1498812141427"
 }
