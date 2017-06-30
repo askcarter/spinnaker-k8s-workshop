@@ -19,7 +19,7 @@ In this workshop, you'll will:
 
 1. [Workshop Setup](labs/workshop-setup.md)
 1. [Pipeline Overview](labs/pipeline-overview.md)
-1. [Building Container Images](labs/building-container-images.md.md)
+1. [Building Container Images](labs/building-container-images.md)
 1. [Installing Spinnaker](labs/installing-spinnaker.md)
 1. [Creating Your Pipeline](labs/creating-your-pipeline.md)
 1. [Rolling Back Updates](labs/rolling-back-updates.md)

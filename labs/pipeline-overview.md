@@ -17,7 +17,7 @@ Dev  tags commit -->[GSR] --> [GCR builds image based on tag] -> [Spin deploys o
 ## The sample app
 You'll use a very simple sample application - `gceme` - as the basis for your CD pipeline. `gceme` is written in Go and is located in the `sample-app` directory in this repo. When you run the `gceme` binary on a GCE instance, it displays the instance's metadata in a pretty card:
 
-![](docs/img/info_card.png)
+![](../docs/img/info_card.png)
 
 The binary supports two modes of operation, designed to mimic a microservice. In backend mode, `gceme` will listen on a port (8080 by default) and return GCE instance metadata as JSON, with content-type=application/json. In frontend mode, `gceme` will query a backend `gceme` service and render that JSON in the UI you saw above. It looks roughly like this:
 
