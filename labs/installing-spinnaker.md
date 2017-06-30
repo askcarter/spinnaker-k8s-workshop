@@ -79,8 +79,7 @@ accounts:
 
 ### Temporary get the updated chart
 ```shell
-$ git clone https://github.com/kubernetes/charts charts
-$ cd charts
+$ git clone https://github.com/kubernetes/charts && cd charts
 
 $ git fetch origin pull/1338/head:test-chart
 $ git checkout test-chart
