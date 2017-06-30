@@ -18,7 +18,9 @@ Click, "Create Application" from the "Actions" menu, in the upper-right of the U
 
 
 ![](../docs/img/ui-configure-application.png)
-Fill in the mandatory fields.
+For Name, type "demo".
+
+For email, enter an email address.
 
 For the Repo Type, select "github".
 
