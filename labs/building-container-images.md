@@ -38,4 +38,4 @@ $ git tag -a v1.0.0 -m "my version 1.0.0"
 $ git push google v1.0.0
 ```
 
-Back in the Spinnaker UI, our build should've kicked off.
+Back in the Container Registry UI's Build history, our build should've kicked off.
