@@ -37,7 +37,7 @@ We'll create four (4), for production and canary versions of our front-end and b
 
 For each of the loadbalancers, following the following instructions.
 
-Click the "Createz Load Balancer" button.
+Click the "Create Load Balancer" button.
 
 Copy the settings for the various load balancers from the images below.
 
@@ -56,7 +56,7 @@ For the backend canary Load Balancer, fill in the following settings:
 
 | Field | Value |
 | --- | --- |
-| Stack | frontend |
+| Stack | backend |
 | Detail | canary |
 | Name | http |
 | Port | 8080 |
@@ -94,7 +94,7 @@ For the frontend canary Load Balancer, fill in the following settings:
 In the command prompt, updated pipeline json description.  Replace ```YOUR_PROJECT_ID``` with your project id.
 
 ```shell
-$ sed -i.bak "s/REPLACE-ME/YOUR_PROJECT_ID/g" pipeline.json
+$ sed -i.bak "s/REPLACE_ME/$PROJECT/g" ../config/pipeline.json
 ```
 
 Click "Create Pipeline or Strategy".
