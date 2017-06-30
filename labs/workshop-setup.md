@@ -3,6 +3,7 @@
 ### Prerequisites
 1. A Google Cloud Platform Account
 1. After signing into your GCP Account, [Click here to enable the Google Compute Engine and Google Container Engine APIs](https://console.cloud.google.com/flows/enableapi?apiid=compute_component,container)
+1. The Google Cloud SDK.  [Click here to install the Google Cloud SDK](https://cloud.google.com/sdk/downloads#interactive).
 
 ## Setup
 
