@@ -131,17 +131,6 @@ In the Pipeline Actions dropdown, click "Edit as Json".
 
 Replace the JSON that displays with the contents on pipeline.json.
 
-## Trigger a Build
 
-## Tag an image, Trigger a build
-
-Now, use git to tag a commit and trigger the build.
-
-```shell
-$ git tag -a v1.0.1 -m "my version 1.0.1"
-$ git push google v1.0.1
-```
-
-Back in the Spinnaker UI, our build should've kicked off.
 
 
