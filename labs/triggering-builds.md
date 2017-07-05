@@ -6,7 +6,9 @@ $ git tag -a v1.0.1 -m "my version 1.0.1"
 $ git push google v1.0.1
 ```
 
-Back in the Spinnaker UI, our build should've kicked off.
+Back in the Cloud Console, we should see our image being built.
+After the image is in GCR, our build should kick off in Spinnaker.
+This may take a few minutes.
 
 ## Rolling Back a Build from the Command Line
 Use git to go back a commit, then push the image and bump the tag.
