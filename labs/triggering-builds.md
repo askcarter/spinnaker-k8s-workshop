@@ -1,4 +1,14 @@
-# Rolling Back
+## Trigger a Build from the Command Line
+Now, we can use git to tag a commit and trigger the build.
+
+```shell
+$ git tag -a v1.0.1 -m "my version 1.0.1"
+$ git push google v1.0.1
+```
+
+Back in the Spinnaker UI, our build should've kicked off.
+
+## Rolling Back a Build from the Command Line
 Use git to go back a commit, then push the image and bump the tag.
 I workshop have user make two commits (the 2nd of which is bad).  When the user pushes them, have them follow this process.
 
@@ -20,7 +30,7 @@ $ git push google v3.0.0
 Roll back change
 ```shell
 $ git <rollback one commit>
-$ git commit -m "Rollbacked buggy code."
+$ git commit -m "Rolled back buggy code."
 $ git push google master
 $ git tag -a v4.0.0 -m "my version 4.0.0"
 $ git push google v4.0.0
