@@ -21,7 +21,7 @@ In this workshop, you'll will:
 1. [Building Container Images](labs/building-container-images.md)
 1. [Installing Spinnaker](labs/installing-spinnaker.md)
 1. [Creating Your Pipeline](labs/creating-your-pipeline.md)
-1. [Rolling Back Updates](labs/rolling-back-updates.md)
+1. [Triggering Deployments](labs/triggering-deployments-v2.md)
 
 ## TODO
 
