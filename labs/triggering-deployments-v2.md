@@ -1,4 +1,4 @@
-## Trigger a Build from the Command Line
+## Trigger a Deployments from the Command Line
 Now, we can use git to tag a commit and trigger the build.
 
 ```shell
@@ -10,7 +10,7 @@ Back in the Cloud Console, we should see our image being built.
 After the image is in GCR, our build should kick off in Spinnaker.
 This may take a few minutes.
 
-## Rolling Back a Build from the Command Line
+## Rolling Back a Deployment from the Command Line
 Use git to go back a commit, then push the image and bump the tag.
 I workshop have user make two commits (the 2nd of which is bad).  When the user pushes them, have them follow this process.
 
