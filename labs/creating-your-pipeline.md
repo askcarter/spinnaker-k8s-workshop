@@ -117,13 +117,15 @@ For the frontend canary Load Balancer, fill in the following settings:
 
 ## Create Deploy Pipeline
 
-In the command prompt, updated pipeline json description.  Replace ```YOUR_PROJECT_ID``` with your project id.
+In the command prompt, update the pipeline's json description using the ```sed``` comamnd.
 
 ```shell
 $ sed -i.bak "s/REPLACE_ME/$PROJECT/g" ../config/pipeline.json
 ```
 
-Click "Create Pipeline or Strategy".
+[TODO: Add Screenshot]
+
+Back in the Spinnaker UI, click "Create Pipeline or Strategy".
 
 Name the new Pipeline "Deploy".
 
@@ -131,6 +133,13 @@ In the Pipeline Actions dropdown, click "Edit as Json".
 
 Replace the JSON that displays with the contents on pipeline.json.
 
+## Wrap Up
+You know have a pipeline tha can be used to deploy application instances into Kubernetes.
 
+In the next lab, you'll be triggering deployments from the command line using git tags.
+
+[TODO: Add Screenshot]
+
+For now, test your pipeline by pressing the "Start Manual" button. 
 
 
