@@ -25,9 +25,9 @@ In this workshop, you'll will:
 
 ## TODO
 
+* Extra Credit: Create Deploy v2, manually
 * IAM / RBAC Integration
 * Halyard Setup
-* 
 
 ## What Next?
 
