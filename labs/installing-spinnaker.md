@@ -34,9 +34,10 @@ $ export PATH=$PATH:/usr/local/linux-amd64
 ```
  
 # Initialize local CLI
-NOTE:  Does the directory matter for anything?
+
 ```shell
 $ helm init
+$ helm repo update
 ```
 
 ## Configure Spinnaker
@@ -84,20 +85,6 @@ accounts:
 
 ## Deploy Spinnaker Chart
 
-### Temporary get the updated chart
-```shell
-$ git clone https://github.com/kubernetes/charts && cd charts
-
-$ git fetch origin pull/1338/head:test-chart
-$ git checkout test-chart
-
-# update the dependencies
-$ cd stable/spinnaker/
-$ helm dep up 
-
-$ cd ../../../
-```
-
 ## Install spinnaker
 NOTE: This is going to take a while. 
 ```shell
@@ -128,7 +115,7 @@ $ kubectl get deployment -l app=cd-spinnaker
 
 NOTE: If you want to make a quick change.  Helm can do a blue green deployment via upgrade.
 ```shell
-$ helm upgrade cd ./charts/stable/spinnaker -f updated-values.yaml
+$ helm upgrade cd stable/spinnaker -f updated-values.yaml
 ```
 
 Debugging can be done with
