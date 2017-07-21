@@ -3,13 +3,6 @@
 In this lab, we'll use a build trigger to connect Google Source Repository to Google Container Registry. 
 After this module, whenever we tag an image for release, we'll kick off a spinnaker deployment.
 
-## Set up the Build Trigger
-
-![](../docs/img/Setup-build-trigger.png)
-
-In the Google Cloud Console, set the build trigger to: 
- 'Changes pushed to "v.*" tag will trigger a build of "gcr.io/askcarter-production-gke/$REPO_NAME:$TAG_NAME"'
-
 
 ## Create a git repository for the code
 ```shell
@@ -28,6 +21,14 @@ $ git config credential.helper gcloud.sh
 $ git remote add google https://source.developers.google.com/p/$PROJECT/r/gceme
 $ git push --all google
 ```
+
+## Set up the Build Trigger
+
+![](../docs/img/Setup-build-trigger.png)
+
+In the Google Cloud Console, set the build trigger to: 
+ 'Changes pushed to "v.*" tag will trigger a build of "gcr.io/askcarter-production-gke/$REPO_NAME:$TAG_NAME"'
+
 
 ## Tag an image, Trigger a build
 
