@@ -88,7 +88,7 @@ accounts:
 ## Install spinnaker
 NOTE: This is going to take a while. 
 ```shell
-$ helm install ./charts/stable/spinnaker --name cd -f ./config/values.yaml --timeout 600
+$ helm install stable/spinnaker --name cd -f ./config/values.yaml --timeout 600
 ```
 In another tab, you can monitor the progress of the installation. 
 Errors will happen this is to be expected while the pods sync up.
