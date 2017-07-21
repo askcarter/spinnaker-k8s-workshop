@@ -15,6 +15,12 @@ Spinnkaer has a lot of pieces and parts.  Below is a table listing everything.  
 | Fiat	| 7003 | Fiat is the authorization server for the Spinnaker system.  It exposes a RESTful interface for querying the access permissions for a particular user. |
 
 ## Install Helm 
+Navigate back to the spinnaker-k8s-workship dir
+
+```shell
+$ cd ..
+```
+
 Download and install helm binary
 From https://github.com/kubernetes/helm/blob/master/docs/quickstart.md
 ```shell
