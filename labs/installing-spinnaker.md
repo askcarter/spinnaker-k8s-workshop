@@ -41,14 +41,15 @@ $ helm init
 
 ## Configure Spinnaker
 
-First, update the values file with your project id.
+First, update the values file with your project id and the current time.
 ```shell
 $ sed -i.bak s/REPLACE_ME/$(gcloud info --format='value(config.project)')/g ./config/values.yaml
+$ sed -i.bak s/TIMESTAMP/$(date +%s)/g ./config/values.yaml
 ```
 
 Next, copy your service account credentials into values.yaml.
 
-Copy the output form the following command into values.yaml, replacing ```<SERVICE_ACCOUNT_JSON>```
+Copy the output from the following command into values.yaml, replacing ```<SERVICE_ACCOUNT_JSON>```
 
 ```shell
 $ SERVICE_ACCOUNT_JSON=$(cat account.json) && echo $SERVICE_ACCOUNT_JSON
